@@ -21,6 +21,8 @@ class WorkerAdmin(UserAdmin):
             },
         ),
     )
+    add_fieldsets = UserAdmin.add_fieldsets + (
+        ("Additional info", {"fields": ("position",)}),)
 
 
 @admin.register(TaskType)
