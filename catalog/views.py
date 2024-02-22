@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
 
 from .models import Task, Worker, Position, TaskType
 
@@ -26,3 +27,15 @@ def index(request):
     }
 
     return render(request, "catalog/index.html", context=context)
+
+
+class TaskListView(LoginRequiredMixin, generic.ListView):
+    model = Task
+    paginate_by = 5
+
+
+class TaskTypeListView(LoginRequiredMixin, generic.ListView):
+    model = Task
+    context_object_name = "tasktype_list"
+    template_name = "catalog/tasktype_list.html"
+    paginate_by = 5
