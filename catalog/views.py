@@ -39,3 +39,15 @@ class TaskTypeListView(LoginRequiredMixin, generic.ListView):
     context_object_name = "tasktype_list"
     template_name = "catalog/tasktype_list.html"
     paginate_by = 5
+
+
+class WorkerListView(LoginRequiredMixin, generic.ListView):
+    model = Worker
+    paginate_by = 5
+
+
+class PositionListView(LoginRequiredMixin, generic.ListView):
+    model = Position
+    context_object_name = "position_list"
+    template_name = "catalog/position_list.html"
+    paginate_by = 5
