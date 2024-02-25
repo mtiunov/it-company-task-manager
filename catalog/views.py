@@ -63,6 +63,10 @@ class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("catalog:task-list")
 
 
+class TaskDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Task
+
+
 class TaskTypeListView(LoginRequiredMixin, generic.ListView):
     model = TaskType
     context_object_name = "tasktype_list"
@@ -115,6 +119,10 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
 class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
     model = Worker
     form_class = WorkerCreationForm
+
+
+class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Worker
 
 
 class PositionListView(LoginRequiredMixin, generic.ListView):

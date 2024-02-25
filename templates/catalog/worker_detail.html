@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Username: {{ worker.username }}
+    <a href="#" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="#" class="btn btn-secondary link-to-page">
+      Update user info
+    </a>
+  </h1>
+
+  <p><strong>First name:</strong> {{ worker.first_name }}</p>
+  <p><strong>Last name:</strong> {{ worker.last_name }}</p>
+  <p><strong>Position:</strong> {{ worker.position.name }}</p>
+
+  <div class="ml-3">
+    <h4>Tasks</h4>
+
+    {% for task in worker.tasks.all %}
+        <hr>
+        <p><strong>Nane:</strong> {{ task.name }}</p>
+        <p><strong>Deadline:</strong> {{ task.deadline }}</p>
+        <p><strong>Priority:</strong> {{ task.priority }}</p>
+        <p class="text-muted"><strong>Id:</strong> {{task.id}}</p>
+
+    {% empty %}
+      <p>No tasks!</p>
+    {% endfor %}
+  </div>
+{% endblock %}

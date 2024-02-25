@@ -34,7 +34,7 @@
               {{ task.id }}
           </td>
           <td>
-              {{ task.name }}
+              <a href="{% url 'catalog:task-detail' task.id %}">{{ task.name }}</a>
           </td>
           <td>
               {{ task.description }}
