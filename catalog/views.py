@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from django.views import generic
 
 from .forms import (
@@ -8,6 +9,7 @@ from .forms import (
     TaskTypeSearchForm,
     PositionSearchForm,
     WorkerSearchForm,
+    WorkerCreationForm,
 )
 from .models import Task, Worker, Position, TaskType
 
@@ -55,11 +57,17 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
+class TaskCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:task-list")
+
+
 class TaskTypeListView(LoginRequiredMixin, generic.ListView):
     model = TaskType
     context_object_name = "tasktype_list"
     template_name = "catalog/tasktype_list.html"
-    paginate_by = 5
+    paginate_by = 3
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(TaskTypeListView, self).get_context_data(**kwargs)
@@ -75,6 +83,12 @@ class TaskTypeListView(LoginRequiredMixin, generic.ListView):
         if form.is_valid():
             return queryset.filter(name__icontains=form.cleaned_data["name"])
         return queryset
+
+
+class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:tasktype-list")
 
 
 class WorkerListView(LoginRequiredMixin, generic.ListView):
@@ -98,6 +112,11 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
+class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Worker
+    form_class = WorkerCreationForm
+
+
 class PositionListView(LoginRequiredMixin, generic.ListView):
     model = Position
     context_object_name = "position_list"
@@ -118,3 +137,9 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
         if form.is_valid():
             return queryset.filter(name__icontains=form.cleaned_data["name"])
         return queryset
+
+
+class PositionCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Position
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:position-list")
