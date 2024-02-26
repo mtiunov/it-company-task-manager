@@ -10,6 +10,7 @@ from .forms import (
     PositionSearchForm,
     WorkerSearchForm,
     WorkerCreationForm,
+    WorkerUpdateForm, TaskForm,
 )
 from .models import Task, Worker, Position, TaskType
 
@@ -59,13 +60,13 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
 
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     model = Task
-    fields = "__all__"
+    form_class = TaskForm
     success_url = reverse_lazy("catalog:task-list")
 
 
 class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Task
-    fields = "__all__"
+    form_class = TaskForm
     success_url = reverse_lazy("catalog:task-list")
 
 
@@ -145,6 +146,17 @@ class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
 
 class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
     model = Worker
+
+
+class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Worker
+    form_class = WorkerUpdateForm
+    success_url = reverse_lazy("catalog:worker-list")
+
+
+class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Worker
+    success_url = reverse_lazy("")
 
 
 class PositionListView(LoginRequiredMixin, generic.ListView):
