@@ -63,6 +63,17 @@ class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("catalog:task-list")
 
 
+class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:task-list")
+
+
+class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Task
+    success_url = reverse_lazy("catalog:task-list")
+
+
 class TaskDetailView(LoginRequiredMixin, generic.DetailView):
     model = Task
 
@@ -90,6 +101,17 @@ class TaskTypeListView(LoginRequiredMixin, generic.ListView):
 
 
 class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:tasktype-list")
+
+
+class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = TaskType
+    success_url = reverse_lazy("catalog:tasktype-list")
+
+
+class TaskTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = TaskType
     fields = "__all__"
     success_url = reverse_lazy("catalog:tasktype-list")
@@ -150,4 +172,15 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
 class PositionCreateView(LoginRequiredMixin, generic.CreateView):
     model = Position
     fields = "__all__"
+    success_url = reverse_lazy("catalog:position-list")
+
+
+class PositionUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Position
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:position-list")
+
+
+class PositionDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Position
     success_url = reverse_lazy("catalog:position-list")

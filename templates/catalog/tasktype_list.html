@@ -31,13 +31,13 @@
               {{ tasktype.name }}
           </td>
           <td>
-              <a href="#">
+              <a href="{% url 'catalog:tasktype-update' pk=tasktype.id %}">
                 Update
               </a>
             </td>
             <td>
               <a style="color: red"
-                href="#">
+                href="{% url 'catalog:tasktype-delete' pk=tasktype.id %}">
                 Delete
               </a>
             </td>

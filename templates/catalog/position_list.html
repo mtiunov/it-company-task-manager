@@ -31,13 +31,13 @@
               {{ position.name }}
           </td>
           <td>
-              <a href="#">
+              <a href="{% url 'catalog:position-update' pk=position.id %}">
                 Update
               </a>
             </td>
             <td>
               <a style="color: red"
-                href="#">
+                href="{% url 'catalog:position-delete' pk=position.id %}">
                 Delete
               </a>
             </td>
