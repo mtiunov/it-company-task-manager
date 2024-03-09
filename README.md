@@ -15,7 +15,7 @@ This project is a task management system for an IT company that has a team of de
 
 ## Using
 
-To use the task management system, follow the link [here](https://github.com/mtiunov/it-company-task-manager.git).
+To use the task management system, follow the link [here](https://task-manager-f5qd.onrender.com).
 
 ## Appurtenances
 
