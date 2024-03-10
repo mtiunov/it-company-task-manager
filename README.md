@@ -17,6 +17,11 @@ This project is a task management system for an IT company that has a team of de
 
 To use the task management system, follow the link [here](https://task-manager-f5qd.onrender.com).
 
+## You can use the test user to view the functionality
+
+- Login: user
+- Password: user12345
+
 ## Appurtenances
 
 - Django 3.0

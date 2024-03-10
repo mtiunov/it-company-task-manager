@@ -10,8 +10,9 @@
  =========================================================
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-{% load static %}
+
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
 
 <head>
@@ -40,7 +41,9 @@
 <link id="pagestyle" href="{% static 'css/soft-design-system.css' %}" rel="stylesheet" />
 </head>
 
-<body {% block body %}{% endblock body %} >
+<body>
+
+  {% block body %}{% endblock body %}
 
   {% block header %}
 
